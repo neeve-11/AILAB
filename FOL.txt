@@ -1,0 +1,24 @@
+from kanren import run, var, fact
+from kanren.assoccomm import eq_assoccomm as eq
+from kanren.assoccomm import commutative, associative
+
+addition = 'add'
+multiplication = 'mul'
+
+fact(commutative, multiplication)
+fact(commutative, addition)
+fact(associative, multiplication)
+fact(associative, addition)
+
+x,y,z = var('x'), var('y'), var('z')
+match_pattern = (addition, (multiplication, 4, x, y), y, (multiplication, 6, z))
+match_pattern = (addition, (multiplication, 3, 4), (multiplication, (addition, 1,(multiplication, 2, 4)),2))
+
+exp1 = (addition, (multiplication, (addition, 1, (multiplication, 2, x)), y), (multiplication, 3, z))
+exp2 = (addition, (multiplication, z, 3), (multiplication, y, (addition, (multiplication, 2, x), 1)))
+exp3 = (addition, (addition, (multiplication, (multiplication, 2, x), y), y), (multiplication, 3, z))
+[7:50 pm, 15/11/2021] Varsha IT: run this command
+[7:50 pm, 15/11/2021] Varsha IT: run(0, (x, y, z), eq(exp2, match_pattern))
+[7:50 pm, 15/11/2021] Varsha IT: run(0, (x, y, z), eq(exp1, match_pattern))
+[7:50 pm, 15/11/2021] Varsha IT: run(0, (x, y, z), eq(exp3, match_pattern))
+ Ithu tha pa frnd send pannanga
